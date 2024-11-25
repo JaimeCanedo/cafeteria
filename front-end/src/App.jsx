@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// Importación de íconos y componentes como en tu código original
 import {
   RiMenu3Fill,
   RiUser3Line,
@@ -17,6 +16,8 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
   const [productos, setProductos] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Todos"); 
+  const [carrito, setCarrito] = useState([]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -41,10 +42,40 @@ function App() {
     fetchProductos();
   }, []);
 
+  // Función para agregar un producto al carrito
+  const agregarAlCarrito = (producto) => {
+    setCarrito((prevCarrito) => {
+      const productoExistente = prevCarrito.find((item) => item.id === producto.id);
+
+      if (productoExistente) {
+        return prevCarrito.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        );
+      } else {
+        return [...prevCarrito, { ...producto, cantidad: 1 }];
+      }
+    });
+  };
+
+  // Función para eliminar un producto del carrito
+  const eliminarDelCarrito = (idProducto) => {
+    setCarrito((prevCarrito) =>
+      prevCarrito.filter((item) => item.id !== idProducto)
+    );
+  };
+
+  // Filtrar productos según la categoría seleccionada
+  const filteredProductos =
+    selectedCategory === "Todos"
+      ? productos
+      : productos.filter((producto) => producto.categoria === selectedCategory);
+
   return (
     <div className="bg-[#262837] w-full min-h-screen">
       <Sidebar showMenu={showMenu} />
-      <Car showOrder={showOrder} setShowOrder={setShowOrder} />
+      <Car showOrder={showOrder} setShowOrder={setShowOrder} carrito={carrito} eliminarDelCarrito={eliminarDelCarrito} />
       <nav className="bg-[#1F1D2B] lg:hidden fixed w-full bottom-0 left-0 text-3xl text-gray-400 py-2 px-8 flex items-center justify-between rounded-tl-xl rounded-tr-xl">
         <button className="p-2">
           <RiUser3Line />
@@ -61,15 +92,16 @@ function App() {
       </nav>
       <main className="lg:pl-32 lg:pr-96 pb-20">
         <div className="md:p-8 p-4">
-          <Header />
+          {/* Header con la función para cambiar la categoría */}
+          <Header setSelectedCategory={setSelectedCategory} />
           <div className="flex items-center justify-between mb-16">
-            <h2 className="text-xl text-gray-300">Elige tu bebida</h2>
+            <h2 className="text-xl text-gray-300">Productos disponibles</h2>
             <button className="flex items-center gap-4 text-gray-300 bg-[#1F1D2B] py-2 px-4 rounded-lg">
-              <RiArrowDownSLine /> Filtrado por
+              <RiArrowDownSLine /> {selectedCategory}
             </button>
           </div>
           <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-            {productos.map((producto) => (
+            {filteredProductos.map((producto) => (
               <Card
                 key={producto.id}
                 img={producto.img}
@@ -77,6 +109,7 @@ function App() {
                 descripcion={producto.descripcion}
                 precio={producto.precio}
                 categoria={producto.categoria}
+                agregarAlCarrito={() => agregarAlCarrito(producto)}
               />
             ))}
           </div>

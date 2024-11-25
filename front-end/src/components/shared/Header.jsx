@@ -1,7 +1,7 @@
 import React from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
-const Header = () => {
+const Header = ({ setSelectedCategory }) => {
   return (
     <header>
       {/* Title and search */}
@@ -23,21 +23,36 @@ const Header = () => {
       </div>
       {/* Tabs */}
       <nav className="text-gray-300 flex items-center justify-between md:justify-start md:gap-8 border-b mb-6">
-        <a
-          href="#"
-          className="relative py-2 pr-4 before:w-1/2 before:h-[2px] before:absolute before:bg-[#ec7c6a] before:left-0 before:rounded-full before:-bottom-[1px] text-[#ec7c6a]"
+        <button
+          onClick={() => setSelectedCategory("Todos")}
+          className="py-2 pr-4 focus:outline-none text-[#ec7c6a]"
+        >
+          Todos
+        </button>
+        <button
+          onClick={() => setSelectedCategory("Bebidas Frias")}
+          className="py-2 pr-4 focus:outline-none"
         >
           Bebidas Frias
-        </a>
-        <a href="#" className="py-2 pr-4">
+        </button>
+        <button
+          onClick={() => setSelectedCategory("Bebidas Calientes")}
+          className="py-2 pr-4 focus:outline-none"
+        >
           Bebidas Calientes
-        </a>
-        <a href="#" className="py-2 pr-4">
+        </button>
+        <button
+          onClick={() => setSelectedCategory("Crepas")}
+          className="py-2 pr-4 focus:outline-none"
+        >
           Crepas
-        </a>
-        <a href="#" className="py-2">
+        </button>
+        <button
+          onClick={() => setSelectedCategory("Postres")}
+          className="py-2 focus:outline-none"
+        >
           Postres
-        </a>
+        </button>
       </nav>
     </header>
   );
