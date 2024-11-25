@@ -16,7 +16,7 @@ const Header = ({ setSelectedCategory }) => {
             <input
               type="text"
               className="bg-[#1F1D2B] w-full py-2 pl-10 pr-4 rounded-lg text-gray-300 outline-none"
-              placeholder="Search"
+              placeholder="Buscar"
             />
           </div>
         </form>
