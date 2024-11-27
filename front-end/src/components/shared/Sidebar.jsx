@@ -21,8 +21,8 @@ const Sidebar = (props) => {
       <div>
         <ul className="pl-4">
           <li>
-            <h1 className="text-2xl text-gray-300 uppercase font-bold text-center my-5">
-              Logo
+            <h1>
+            <img src="/src/components/imgs/logo.png" alt="Logo" />
             </h1>
           </li>
           <li className="bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl">
