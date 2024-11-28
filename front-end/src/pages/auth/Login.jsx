@@ -15,21 +15,25 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate(); // Para redirigir después del login exitoso
 
-  // Manejar la solicitud de login
   const handleLogin = async (e) => {
     e.preventDefault(); // Evitar que la página se recargue
-
+  
     try {
       // Realizar la solicitud al backend para autenticar al usuario
       const response = await axios.post("http://localhost:8085/api/login", {
         name,
         password,
       });
-
+  
+      console.log(response);  // Para depurar la respuesta
+  
       // Verificar si la autenticación es exitosa
-      if (response.data.success) {
+      if (response.data.message === "Inicio de sesión exitoso") {
+        // Guardar el JWT en localStorage
+        localStorage.setItem("token", response.data.token);
+  
         // Si el login es exitoso, redirigir al usuario a la página principal
-        navigate("/home"); // Cambiar "/home" por la ruta a la que quieras redirigir
+        navigate("/"); // Cambiar "/home" por la ruta a la que quieras redirigir
       } else {
         // Si hay un error, mostrar el mensaje de error
         setErrorMessage("Credenciales incorrectas. Intenta de nuevo.");
@@ -39,6 +43,7 @@ const Login = () => {
       setErrorMessage("Hubo un problema al autenticarte. Intenta más tarde.");
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
