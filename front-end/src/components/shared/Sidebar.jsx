@@ -27,13 +27,13 @@ const Sidebar = (props) => {
           </li>
           <li className="bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl">
             <a
-              href="#"
+              href="/"
               className="bg-[#ec7c6a] p-4 flex justify-center rounded-xl text-white"
             >
               <RiHome6Line className="text-2xl" />
             </a>
           </li>
-          <li className="hover:bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl group transition-colors">
+          {/* <li className="hover:bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl group transition-colors">
             <a
               href="#"
               className="group-hover:bg-[#ec7c6a] p-4 flex justify-center rounded-xl text-[#ec7c6a] group-hover:text-white transition-colors"
@@ -64,10 +64,10 @@ const Sidebar = (props) => {
             >
               <RiNotification3Line className="text-2xl" />
             </a>
-          </li>
+          </li> */}
           <li className="hover:bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl group transition-colors">
             <a
-              href="#"
+              href="admin"
               className="group-hover:bg-[#ec7c6a] p-4 flex justify-center rounded-xl text-[#ec7c6a] group-hover:text-white transition-colors"
             >
               <RiSettings4Line className="text-2xl" />
@@ -79,7 +79,7 @@ const Sidebar = (props) => {
         <ul className="pl-4">
           <li className="hover:bg-[#262837] p-4 rounded-tl-xl rounded-bl-xl group transition-colors">
             <a
-              href="#"
+              href="login"
               className="group-hover:bg-[#ec7c6a] p-4 flex justify-center rounded-xl text-[#ec7c6a] group-hover:text-white transition-colors"
             >
               <RiLogoutCircleRLine className="text-2xl" />

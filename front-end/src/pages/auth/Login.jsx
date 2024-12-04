@@ -52,13 +52,13 @@ const Login = () => {
           Iniciar <span className="text-primary">sesión</span>
         </h1>
         <form className="mb-8" onSubmit={handleLogin}>
-          <button className="flex items-center justify-center py-3 px-4 gap-4 bg-secondary-900 w-full rounded-full mb-8 text-gray-100">
+          {/* <button className="flex items-center justify-center py-3 px-4 gap-4 bg-secondary-900 w-full rounded-full mb-8 text-gray-100">
             <img
               src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"
               className="w-4 h-4"
             />
             Ingresa con google
-          </button>
+          </button> */}
           <div className="relative mb-4">
             <RiMailLine className="absolute top-1/2 -translate-y-1/2 left-2 text-primary" />
             <input
@@ -96,7 +96,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="bg-primary text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg"
+              className="bg-blue-500 text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg"
             >
               Ingresar
             </button>
@@ -105,7 +105,7 @@ const Login = () => {
         <div className="flex flex-col items-center gap-4">
           <Link
             to="/olvide-password"
-            className="hover:text-primary transition-colors"
+            className="hover:text-red-500 transition-colors"
           >
             ¿Olvidaste tu contraseña?
           </Link>
@@ -113,7 +113,7 @@ const Login = () => {
             ¿No tienes cuenta?{" "}
             <Link
               to="/registro"
-              className="text-primary hover:text-gray-100 transition-colors"
+              className="text-primary hover:text-blue-500 transition-colors"
             >
               Registrate
             </Link>
